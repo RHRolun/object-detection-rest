@@ -40,7 +40,7 @@ def _draw_bounding_box_on_image(
     draw.line([(left, top), (left, bottom), (right, bottom), (right, top),
                (left, top)], width=thickness, fill=color)
 
-    display_str_heights = [font.getsize(ds)[1] for ds in display_str_list]
+    display_str_heights = [font.getbbox(ds)[3] for ds in display_str_list]
     total_display_str_height = (1 + 2 * 0.05) * sum(display_str_heights)
     if top > total_display_str_height:
         text_bottom = top
@@ -48,7 +48,7 @@ def _draw_bounding_box_on_image(
         text_bottom = top + total_display_str_height
 
     for display_str in display_str_list[::-1]:
-        text_width, text_height = font.getsize(display_str)
+        _, _, text_width, text_height = font.getbbox(display_str)
         margin = np.ceil(0.05 * text_height)
         draw.rectangle([(left, text_bottom - text_height - 2 * margin),
                         (left + text_width, text_bottom)], fill=color)
