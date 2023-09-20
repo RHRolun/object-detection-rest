@@ -13,7 +13,7 @@ def predict(data_folder='./data'):
     with open(f'{data_folder}/images.pickle', 'rb') as inputfile:
         image_names, images = load(inputfile)
 
-    session = InferenceSession('model.onnx')
+    session = InferenceSession('model.onnx', providers=['CPUExecutionProvider'])
 
     raw_results = [
         session.run(
