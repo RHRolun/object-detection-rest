@@ -326,9 +326,10 @@
         "version": 8,
         "runtime_type": "KUBEFLOW_PIPELINES",
         "properties": {
-          "name": "untitled",
+          "name": "offline-scoring",
           "runtime": "Data Science Pipelines",
           "pipeline_defaults": {
+            "kubernetes_shared_mem_size": {},
             "mounted_volumes": [
               {
                 "path": "/data",
@@ -337,13 +338,12 @@
               }
             ],
             "kubernetes_pod_annotations": [],
-            "kubernetes_pod_labels": [],
-            "kubernetes_shared_mem_size": {},
             "kubernetes_tolerations": [],
+            "kubernetes_pod_labels": [],
             "env_vars": [
               {
                 "env_var": "S3_ENDPOINT_URL",
-                "value": "https://minio-api-object-detection.apps.cluster-svrr2.svrr2.sandbox2990.opentlc.com"
+                "value": "https://minio-api-object-detection.apps.cluster-v9x8f.v9x8f.sandbox1213.opentlc.com"
               },
               {
                 "env_var": "S3_ACCESS_KEY"
