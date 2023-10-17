@@ -29,7 +29,7 @@ def ingest_data(data_folder='./data', max_images=5):
     )
     bucket = s3.Bucket(s3_bucket_name)
     
-    prefix = 'onnx-models/vision/tiny-yolo/'
+    prefix = ''
     
     download_count = 0
     for s3_object in bucket.objects.filter(Prefix=prefix):

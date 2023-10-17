@@ -45,7 +45,7 @@ def _scan_images_folder(images_folder):
 
 
 def _transform(image):
-    model_image_size = (416, 416)
+    model_image_size = (260, 260)
     boxed_image = _letterbox_image(image, tuple(reversed(model_image_size)))
     image_data = np.array(boxed_image, dtype='float32')
     image_data /= 255.

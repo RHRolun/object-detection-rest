@@ -1,5 +1,5 @@
 import numpy as np
-from PIL import Image, ImageColor, ImageDraw, ImageFont
+from PIL import Image, ImageColor, ImageDraw, ImageFont, ImageOps
 
 
 def draw_boxes(image, boxes, scores, classes):
@@ -21,6 +21,21 @@ def draw_boxes(image, boxes, scores, classes):
         )
     return image_pil
     image_pil.show()
+    
+def draw_result(image, scores, classes):
+    image_pil = Image.open(image)
+    
+    image_width = image_pil.width
+    
+    image_pil = ImageOps.expand(image_pil, border=(0,0,200,0), fill=(255,255,255))
+    draw = ImageDraw.Draw(image_pil)
+
+    text = ""
+    for i in range(len(scores[0])):
+        text += f"{classes[0][i]} | {round(scores[0][i]*100,1)}%\n"
+    font = ImageFont.load_default()
+    draw.text((image_width+5,5),text,(0,0,0),font=font)
+    return image_pil
 
 
 def _draw_bounding_box_on_image(
