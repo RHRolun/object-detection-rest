@@ -4,12 +4,12 @@ import torchvision
 import torchvision.transforms as transforms
 import json
 
-def convert_fastai_to_onnx(model_location="/train_data/birds-res34-fast.pkl"):
+def convert_fastai_to_onnx(model_location="./train_data/birds-res34-fast.pkl", export_location="./train_data"):
     learn = load_learner(model_location) #Load the fastai model
     labels = learn.dls.vocab #Load labels
     pytorch_model = _convert_fastai_to_pytorch(learn)
-    _export_pytorch_as_onnx(pytorch_model)
-    _export_labels_as_json(labels)
+    _export_pytorch_as_onnx(pytorch_model, export_location)
+    _export_labels_as_json(labels, export_location)
     
 def _convert_fastai_to_pytorch(learn):
     pytorch_model = learn.model.eval() # gets the PyTorch model
@@ -24,11 +24,11 @@ def _convert_fastai_to_pytorch(learn):
     )
     return final_model
 
-def _export_pytorch_as_onnx(pytorch_model):
+def _export_pytorch_as_onnx(pytorch_model, export_location="./train_data"):
     torch.onnx.export(
         pytorch_model, 
         torch.randn(1, 3, 260, 260),
-        "/train_data/model.onnx",
+        f"{export_location}/model.onnx",
         do_constant_folding=True,
         export_params=True, # if set to False exports untrained model
         input_names=["pixel_values"],
@@ -36,10 +36,10 @@ def _export_pytorch_as_onnx(pytorch_model):
         opset_version=11
     )
     
-def _export_labels_as_json(labels):
+def _export_labels_as_json(labels, export_location="./train_data"):
     json_labels = {"id2label":{i:label for i,label in enumerate(labels)}}
-    with open('/train_data/labels.json', 'w') as f:
+    with open(f'{export_location}/labels.json', 'w') as f:
         json.dump(json_labels, f)
     
 if __name__ == '__main__':
-    convert_fastai_to_onnx()
+    convert_fastai_to_onnx(model_location="/train_data/birds-res34-fast.pkl", export_location="/train_data")

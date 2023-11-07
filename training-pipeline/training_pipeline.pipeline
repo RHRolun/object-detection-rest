@@ -13,7 +13,6 @@
           "type": "execution_node",
           "op": "execute-python-node",
           "app_data": {
-            "label": "",
             "component_parameters": {
               "dependencies": [],
               "include_subdirectories": false,
@@ -27,6 +26,7 @@
               "mounted_volumes": [],
               "filename": "fetch_data.py"
             },
+            "label": "",
             "ui_data": {
               "label": "fetch_data.py",
               "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
@@ -69,7 +69,6 @@
           "type": "execution_node",
           "op": "execute-python-node",
           "app_data": {
-            "label": "",
             "component_parameters": {
               "dependencies": [],
               "include_subdirectories": false,
@@ -83,6 +82,7 @@
               "mounted_volumes": [],
               "filename": "train_model.py"
             },
+            "label": "",
             "ui_data": {
               "label": "train_model.py",
               "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
@@ -132,7 +132,6 @@
           "type": "execution_node",
           "op": "execute-python-node",
           "app_data": {
-            "label": "",
             "component_parameters": {
               "dependencies": [],
               "include_subdirectories": false,
@@ -146,6 +145,7 @@
               "mounted_volumes": [],
               "filename": "onnx_converter.py"
             },
+            "label": "",
             "ui_data": {
               "label": "onnx_converter.py",
               "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
@@ -195,7 +195,6 @@
           "type": "execution_node",
           "op": "execute-python-node",
           "app_data": {
-            "label": "",
             "component_parameters": {
               "dependencies": [],
               "include_subdirectories": false,
@@ -209,6 +208,7 @@
               "mounted_volumes": [],
               "filename": "upload_model.py"
             },
+            "label": "",
             "ui_data": {
               "label": "upload_model.py",
               "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
@@ -265,8 +265,6 @@
           "runtime": "Data Science Pipelines",
           "pipeline_defaults": {
             "kubernetes_shared_mem_size": {},
-            "kubernetes_pod_annotations": [],
-            "kubernetes_pod_labels": [],
             "mounted_volumes": [
               {
                 "path": "/train_data",
@@ -275,6 +273,8 @@
               }
             ],
             "kubernetes_tolerations": [],
+            "kubernetes_pod_annotations": [],
+            "kubernetes_pod_labels": [],
             "env_vars": [
               {
                 "env_var": "S3_ENDPOINT_URL",

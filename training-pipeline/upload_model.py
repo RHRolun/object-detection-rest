@@ -20,7 +20,7 @@ s3_bucket_name = environ.get(
     )
 
 
-def upload_object(object_prefix='model', version='', file_type='.onnx', upload_file='/train_data/model.onnx'):
+def upload_object(object_prefix='model', version='', file_type='.onnx', upload_file='./train_data/model.onnx'):
     s3_client = _initialize_s3_client(
         s3_endpoint_url=s3_endpoint_url,
         s3_access_key=s3_access_key,
@@ -66,7 +66,9 @@ def _do_upload(s3_client, object_name, upload_file):
         raise
     print(f'model uploaded and available as "{object_name}"')
 
+def upload_model(from_folder='./train_data/'):
+    upload_object(object_prefix=model_object_prefix, upload_file=f'{from_folder}/model.onnx')
+    upload_object(object_prefix=config_object_prefix, upload_file=f'{from_folder}/labels.json', file_type='.json')
 
 if __name__ == '__main__':
-    upload_object(object_prefix=model_object_prefix, upload_file='/train_data/model.onnx')
-    upload_object(object_prefix=config_object_prefix, upload_file='/train_data/labels.json', file_type='.json')
+    upload_model("/train_data")
