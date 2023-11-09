@@ -29,7 +29,7 @@
             "label": "",
             "ui_data": {
               "label": "fetch_data.py",
-              "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
+              "image": "/notebook/birds/birds/static/elyra/python.svg",
               "x_pos": 310,
               "y_pos": 349,
               "description": "Run Python script"
@@ -85,7 +85,7 @@
             "label": "",
             "ui_data": {
               "label": "train_model.py",
-              "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
+              "image": "/notebook/birds/birds/static/elyra/python.svg",
               "x_pos": 630,
               "y_pos": 349,
               "description": "Run Python script"
@@ -148,7 +148,7 @@
             "label": "",
             "ui_data": {
               "label": "onnx_converter.py",
-              "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
+              "image": "/notebook/birds/birds/static/elyra/python.svg",
               "x_pos": 934,
               "y_pos": 348,
               "description": "Run Python script"
@@ -211,7 +211,7 @@
             "label": "",
             "ui_data": {
               "label": "upload_model.py",
-              "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
+              "image": "/notebook/birds/birds/static/elyra/python.svg",
               "x_pos": 1244,
               "y_pos": 347,
               "description": "Run Python script"
@@ -265,6 +265,9 @@
           "runtime": "Data Science Pipelines",
           "pipeline_defaults": {
             "kubernetes_shared_mem_size": {},
+            "kubernetes_pod_annotations": [],
+            "kubernetes_tolerations": [],
+            "kubernetes_pod_labels": [],
             "mounted_volumes": [
               {
                 "path": "/train_data",
@@ -272,9 +275,6 @@
                 "read_only": false
               }
             ],
-            "kubernetes_tolerations": [],
-            "kubernetes_pod_annotations": [],
-            "kubernetes_pod_labels": [],
             "env_vars": [
               {
                 "env_var": "S3_ENDPOINT_URL",
@@ -285,7 +285,7 @@
               },
               {
                 "env_var": "S3_BUCKET_NAME",
-                "value": "models"
+                "value": "model"
               },
               {
                 "env_var": "S3_SECRET_KEY"
