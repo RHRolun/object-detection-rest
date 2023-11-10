@@ -17,7 +17,7 @@ def postprocess(raw_result):
     classes = _get_classes()
     scores, detected_classes = [], []
     for sample in raw_result:
-        ind = np.argpartition(sample, -4)[-4:]
+        ind = np.argpartition(sample, -min(sample.shape[0], 4))[-4:]
         ind = ind[np.argsort(-sample[ind])]
         ind = ind[sample[ind]>0]
         
