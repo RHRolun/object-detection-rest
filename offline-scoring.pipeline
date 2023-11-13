@@ -32,7 +32,7 @@
             "label": "",
             "ui_data": {
               "label": "model_loading.py",
-              "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
+              "image": "/notebook/birds/birdtest/static/elyra/python.svg",
               "x_pos": 441,
               "y_pos": 558,
               "description": "Run Python script"
@@ -88,7 +88,7 @@
             "label": "",
             "ui_data": {
               "label": "data_ingestion.py",
-              "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
+              "image": "/notebook/birds/birdtest/static/elyra/python.svg",
               "x_pos": 327,
               "y_pos": 302,
               "description": "Run Python script"
@@ -144,7 +144,7 @@
             "label": "",
             "ui_data": {
               "label": "preprocessing.py",
-              "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
+              "image": "/notebook/birds/birdtest/static/elyra/python.svg",
               "x_pos": 581,
               "y_pos": 303,
               "description": "Run Python script"
@@ -209,7 +209,7 @@
             "label": "",
             "ui_data": {
               "label": "scoring.py",
-              "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
+              "image": "/notebook/birds/birdtest/static/elyra/python.svg",
               "x_pos": 782.9999389648438,
               "y_pos": 443,
               "description": "Run Python script"
@@ -277,7 +277,7 @@
             "label": "",
             "ui_data": {
               "label": "results_upload.py",
-              "image": "/notebook/robert-serving-test/pipelinetest/static/elyra/python.svg",
+              "image": "/notebook/birds/birdtest/static/elyra/python.svg",
               "x_pos": 986,
               "y_pos": 444,
               "description": "Run Python script"
@@ -333,6 +333,7 @@
             "kubernetes_shared_mem_size": {},
             "kubernetes_pod_annotations": [],
             "kubernetes_pod_labels": [],
+            "kubernetes_tolerations": [],
             "mounted_volumes": [
               {
                 "path": "/data",
@@ -340,12 +341,10 @@
                 "read_only": false
               }
             ],
-            "kubernetes_tolerations": [],
-            "kubernetes_secrets": [],
             "env_vars": [
               {
                 "env_var": "S3_ENDPOINT_URL",
-                "value": "https://minio-api-robert-serving-test.apps.rhods-internal.61tk.p1.openshiftapps.com"
+                "value": "https://minio-api-birds.apps.cluster-mp2n2.dynamic.opentlc.com"
               },
               {
                 "env_var": "S3_ACCESS_KEY"
@@ -358,6 +357,7 @@
                 "env_var": "S3_SECRET_KEY"
               }
             ],
+            "kubernetes_secrets": [],
             "runtime_image": "quay.io/rlundber/yolo_demo:1.0"
           },
           "pipeline_parameters": []
